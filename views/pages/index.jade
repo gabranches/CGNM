@@ -11,6 +11,12 @@ html
 
     body
         .container
+            .row.text-center
+                #map
+                    - for (var x = 0; x < 300; x++)
+                        .map-box(box-num=x)
+
+
         
       
         script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")

@@ -23,14 +23,10 @@ var Nade = new Schema({
     type: String,
     rating: Number,
     link: String,
-    side: String
-});
-
-
-var Zone = new Schema({
-    name: String,
-    tag: String,
-    nades: [Nade]
+    side: String,
+    title: String,
+    description: String,
+    box: Number
 });
 
 
@@ -38,7 +34,7 @@ var Map = new Schema({
     name: String,
     tag: String,
     type: String,
-    zones: [Zone]
+    nades: [Nade]
 });
 
 //-- Methods --//
