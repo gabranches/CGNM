@@ -29,30 +29,25 @@ var Nade = new Schema({
 
 var Zone = new Schema({
     name: String,
+    tag: String,
     nades: [Nade]
 });
 
 
 var Map = new Schema({
     name: String,
+    tag: String,
     type: String,
     zones: [Zone]
 });
-
-var Maps = new Schema({
-    maps: [Map]
-});
-
 
 //-- Methods --//
 
 
 //-- Models --//
 
-var MapsModel = mongoose.model('Maps', Maps);
+var MapModel = mongoose.model('Map', Map);
 
-//-- Export Module --//
+// make this available to our users in our Node applications
+module.exports = MapModel;
 
-module.exports = {
-    Maps: MapsModel
-}

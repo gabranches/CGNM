@@ -15,10 +15,7 @@ app.set('view engine', 'jade');
 
 // Front page
 app.get('/', function (request, response) {
-    response.render('pages/index', {
-    	heroes: heroes,
-     	maps: halfMaps
-     });
+    response.render('pages/index');
 });
 
 
