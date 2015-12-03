@@ -1,0 +1,12 @@
+{
+  "name": "CGNM",
+  "version": "1.0.1",
+  "description": "",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.10.2",
+    "express-session": "^1.11.3",
+    "jade": "^1.11.0",
+    "mongoose": "^4.2.4"
+  }
+}
