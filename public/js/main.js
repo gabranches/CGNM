@@ -2,7 +2,7 @@ $(document).ready(function () {
 	loadNades();
 	setBackground();
 
-	$('#map-title').html("Map: " + map.name);
+	$('#map-title').html(map.name);
 
 	// Sort
 	map.nades.sort(function(a, b) {

@@ -14,10 +14,9 @@ html
         .container
             #header.text-center.row
                 | CS:GO Smoke and Nade Maps
-            #map-title.row.text-center
 
             #map-top.row.text-center
-                .col-xs-1
+                #map-title.col-xs-3
                 .col-xs-3
                     select#map-select.form-control
                         option(value="default" disabled selected).
@@ -38,7 +37,7 @@ html
                             Train
                             
 
-                .col-xs-4.text-center
+                .col-xs-3.text-right
                     button#add-nade-button.btn.btn-primary.
                         Add a Nade
                 .col-xs-3
