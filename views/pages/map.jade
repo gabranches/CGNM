@@ -2,17 +2,23 @@ doctype html
 html
     head
         meta(charset="utf-8")
-        title CGNM
-        meta(description="")
+        title Counter-Strike: Global Offensive Smoke and Nade Maps
+        meta(description="Smoke and nade map guide for CS:GO.")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
         link(rel="stylesheet", href="/stylesheets/main.css")
         link(rel="icon" href="/favicon.ico")
+        link(href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css')
 
     body
         .container
+            #header.text-center.row
+                | CS:GO Smoke and Nade Maps
+            #map-title.row.text-center
+
             #map-top.row.text-center
-                .col-xs-4
+                .col-xs-1
+                .col-xs-3
                     select#map-select.form-control
                         option(value="default" disabled selected).
                             Select a map
@@ -21,7 +27,7 @@ html
                         option(value="cbble").
                             Cobblestone
                         option(value="dust2").
-                            Dust 2
+                            Dust II
                         option(value="inferno").
                             Inferno
                         option(value="mirage").
@@ -35,13 +41,21 @@ html
                 .col-xs-4.text-center
                     button#add-nade-button.btn.btn-primary.
                         Add a Nade
-                .col-xs-4
+                .col-xs-3
                     button#all-nades-button.btn.btn-primary.
                         View Full Nade List
+
+           
+
             .row.text-center
                 #map(style="background-image: url(/images/maps/#{map[0].tag}.jpg)")
                     - for (var x = 0; x < 400; x++)
                         .map-box(box-num=x count=0)
+            #footer.row.text-center
+                .col-xs-2
+                    a(href="https://docs.google.com/forms/d/1amF_0OzqKqUDdpF9us4OttN_QnKT1_NJOplwzCj_VlA/viewform?usp=send_form" target="_blank") Feedback
+                .col-xs-2
+                    a(href="https://github.com/gabranches/CGNM" target="_blank") GitHub
     
         #add-nade.modal.fade(tabindex="1" role="dialog")
             .modal-dialog
@@ -87,9 +101,9 @@ html
                         #list-nades-table-header.row
                             .col-xs-2.
                                 Rating
-                            .col-xs-3.
+                            .col-xs-2.
                                 Type
-                            .col-xs-4.
+                            .col-xs-5.
                                 Title
                             .col-xs-3.
                                 Link
@@ -104,15 +118,17 @@ html
             .row
                 #nade-wrapper.col-xs-12.text-center
                     #nade-row.row(class= "{{team}}-bg")
-                        .col-xs-2.
-                            + {{rating}} -
-                        .col-xs-3.
-                            {{type}}
-                        .col-xs-4.
-                            {{title}}
-                        .col-xs-3.
+                        .col-xs-2
+                            span(class="glyphicon glyphicon-triangle-top" data-id="{{_id}}")
+                            span(id="{{_id}}")
+                                | {{rating}}
+                            span(class="glyphicon glyphicon-triangle-bottom" data-id="{{_id}}")
+                        .col-xs-2
+                            | {{type}}
+                        .col-xs-5
+                            | {{title}}
+                        .col-xs-3
                             a(href="{{link}}" target="_blank") Watch Video
-
                             
           
 

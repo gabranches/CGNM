@@ -2,6 +2,13 @@ $(document).ready(function () {
 	loadNades();
 	setBackground();
 
+	$('#map-title').html("Map: " + map.name);
+
+	// Sort
+	map.nades.sort(function(a, b) {
+    return parseFloat(b.rating) - parseFloat(a.rating);
+});
+
 });
 
 //** Globals **//
@@ -92,6 +99,26 @@ function listNades(num) {
 
 }
 
+function vote(id, choice) {
+
+	var vote = {id: id, choice: choice, map: map.tag};
+
+	$.ajax({
+	 	type: "POST",
+	 	url: '/ajax/vote',
+		data: vote,
+		datatype: "json",
+		success: function (res) {
+			res = JSON.parse(res);
+			if (res.error) {
+				alert(res.error);
+			} else {
+				$('#' + id).text(res.rating);
+			}
+	  	}
+	});
+}
+
 
 
 //** Events **//
@@ -122,14 +149,10 @@ $('#add-nade-button').on('click', function () {
 	$(this).text("Pick a spot on the map");
 });
 
-// Add nade close button
-$('#nade-close').on('click', function () {
-	$('#add-nade-button').text("Add a Nade");
-});
-
 
 // Add nade modal close
 $('#add-nade').on('hidden.bs.modal', function () {
+	$('#add-nade-button').text("Add a Nade");
 	state.addNade = false;
 });
 
@@ -145,6 +168,17 @@ $('#all-nades-button').on('click', function () {
 	$('#list-nades-modal').modal('show');
 });
 
+// Vote up
+$(document).on('click', '.glyphicon-triangle-top', function() {
+	var id = $(this).attr('data-id');
+	vote(id, "up");
+});
+
+// Vote down
+$(document).on('click', '.glyphicon-triangle-bottom', function() {
+	var id = $(this).attr('data-id');
+	vote(id, "down");
+});
 
 // Map select box
 $('#map-select').on('change', function() {
@@ -164,7 +198,6 @@ $('#nade-submit').on('click', function () {
 			type: $('#nade-type option:selected').val(),
 			team: $('#nade-team option:selected').val(),
 			title: $('#nade-title').val().trim(),
-			description: $('#nade-description').val().trim(),
 			link: $('#nade-link').val().trim(),
 			rating: 0
 		}
@@ -175,14 +208,22 @@ $('#nade-submit').on('click', function () {
 		 	url: '/ajax/newnade',
 			data: data,
 			datatype: "json",
-			success: function () {
-		  		$('#add-nade').modal('hide');
-		  		$('#add-nade-button').text("Success!");
-				addNadeToMap(data);
-				map.nades.push(data);
-		  		window.setTimeout(function() {
-		  			$('#add-nade-button').text("Add a Nade");
-		  		}, 5000);
+			success: function (res) {
+				res = JSON.parse(res);
+
+				if (res.error) {
+					alert(res.error);
+
+				} else {
+
+			  		$('#add-nade').modal('hide');
+			  		$('#add-nade-button').text("Success!");
+					addNadeToMap(data);
+					map.nades.push(data);
+			  		window.setTimeout(function() {
+			  			$('#add-nade-button').text("Add a Nade");
+			  		}, 5000);
+				}
 
 		  	}
 		});
