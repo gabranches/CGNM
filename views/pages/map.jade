@@ -11,12 +11,33 @@ html
 
     body
         .container
-            .row
-                .col-xs-8
-                    p Click on a map section to see nades
+            #map-top.row.text-center
+                .col-xs-4
+                    select#map-select.form-control
+                        option(value="default" disabled selected).
+                            Select a map
+                        option(value="cache").
+                            Cache
+                        option(value="cbble").
+                            Cobblestone
+                        option(value="dust2").
+                            Dust 2
+                        option(value="inferno").
+                            Inferno
+                        option(value="mirage").
+                            Mirage
+                        option(value="overpass").
+                            Overpass
+                        option(value="train").
+                            Train
+                            
+
                 .col-xs-4.text-center
                     button#add-nade-button.btn.btn-primary.
-                        Add a nade
+                        Add a Nade
+                .col-xs-4
+                    button#all-nades-button.btn.btn-primary.
+                        View Full Nade List
             .row.text-center
                 #map(style="background-image: url(/images/maps/#{map[0].tag}.jpg)")
                     - for (var x = 0; x < 400; x++)
@@ -26,21 +47,19 @@ html
             .modal-dialog
                 .modal-content
                     .modal-header
-                        h4.modal-title.
-                            Add a New Nade
                     .modal-body
                         form
                             fieldset.form-group
                                 select#nade-type.form-control
                                     option(value="default" disabled selected).
-                                        Nade type
-                                    option(value="smoke").
+                                        Nade Type
+                                    option(value="Smoke").
                                         Smoke
-                                    option(value="flash").
+                                    option(value="Flash").
                                         Flash
-                                    option(value="molotov").
+                                    option(value="Molotov").
                                         Molotov
-                                    option(value="frag").
+                                    option(value="Frag").
                                         Frag
                                 select#nade-team.form-control
                                     option(value="default" disabled selected).
@@ -49,9 +68,8 @@ html
                                         Counter-Terrorist
                                     option(value="t").
                                         Terrorist
-                                input#nade-name.form-control(placeholder="Nade name")
-                                textarea#nade-description.form-control(placeholder="Description (optional)")
-                                input#nade-link.form-control(placeholder="Video or image link")
+                                input#nade-title.form-control(placeholder="Nade Title (e.g. CT Spawn from Long)")
+                                input#nade-link.form-control(placeholder="Video Link (Please include timestamp if the video has more than one nade)")
                         #errors
 
 
@@ -61,10 +79,48 @@ html
                         button#nade-submit(type="button" class="btn btn-primary").
                             Submit
 
+        #list-nades-modal.modal.fade(tabindex="1" role="dialog")
+            .modal-dialog
+                .modal-content.text-center
+                    .modal-header.
+                    .modal-body
+                        #list-nades-table-header.row
+                            .col-xs-2.
+                                Rating
+                            .col-xs-3.
+                                Type
+                            .col-xs-4.
+                                Title
+                            .col-xs-3.
+                                Link
+                        #list-nades
+
+                    .modal-footer
+                        button(type="button" class="btn btn-default" data-dismiss="modal").
+                            Close
+
+
+        script(id="entry-template" type="text/x-handlebars-template")
+            .row
+                #nade-wrapper.col-xs-12.text-center
+                    #nade-row.row(class= "{{team}}-bg")
+                        .col-xs-2.
+                            + {{rating}} -
+                        .col-xs-3.
+                            {{type}}
+                        .col-xs-4.
+                            {{title}}
+                        .col-xs-3.
+                            a(href="{{link}}" target="_blank") Watch Video
+
+                            
+          
+
 
 
         script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
         script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+        script(src="/js/handlebars.js")
         script(type="text/javascript").
             var map = !{JSON.stringify(map[0])};
         script(src="/js/main.js")

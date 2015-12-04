@@ -37,17 +37,18 @@ app.get('/maps/:map', function (request, response) {
 // New nade
 app.post('/ajax/newnade', function (request, response) {
     var data = request.body;
+	console.log(data);
 
     Map.findOne({tag: data.map}, function (err, doc) {
     	if (err) throw err;
-    	console.log(doc);
     	doc.nades.push(
 			{
         		box: data.box,
         		type: data.type,
         		team: data.team,
-        		description: data.description,
-        		link: data.link
+        		link: data.link,
+        		title: data.title,
+        		rating: data.rating
         	}
     	);
 
