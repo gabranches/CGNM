@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	loadNades();
 
 });
 
@@ -49,10 +50,20 @@ function validateNewNade() {
 
 }
 
-
 function addNadeToMap(nade) {
+	var elem = $('div[box-num="'+nade.box+'"]');
 
+	if (elem.attr('count') == 0) {
+		elem.append('test');
+	}
 }
+
+function loadNades() {
+	map.nades.forEach(function (nade) {
+		addNadeToMap(nade);
+	})
+}
+
 
 
 //** Events **//

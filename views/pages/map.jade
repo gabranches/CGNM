@@ -20,7 +20,7 @@ html
             .row.text-center
                 #map(style="background-image: url(/images/maps/#{map[0].tag}.jpg)")
                     - for (var x = 0; x < 400; x++)
-                        .map-box(box-num=x)
+                        .map-box(box-num=x count=0)
     
         #add-nade.modal.fade(tabindex="1" role="dialog")
             .modal-dialog
