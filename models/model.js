@@ -23,7 +23,7 @@ var Nade = new Schema({
     type: String,
     rating: Number,
     link: String,
-    side: String,
+    team: String,
     title: String,
     description: String,
     box: Number

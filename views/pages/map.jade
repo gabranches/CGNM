@@ -27,14 +27,38 @@ html
                 .modal-content
                     .modal-header
                         h4.modal-title.
-                            New Nade
+                            Add a New Nade
                     .modal-body
-                        p One fine body
+                        form
+                            fieldset.form-group
+                                select#nade-type.form-control
+                                    option(value="default" disabled selected).
+                                        Nade type
+                                    option(value="smoke").
+                                        Smoke
+                                    option(value="flash").
+                                        Flash
+                                    option(value="molotov").
+                                        Molotov
+                                    option(value="frag").
+                                        Frag
+                                select#nade-team.form-control
+                                    option(value="default" disabled selected).
+                                        Team
+                                    option(value="ct").
+                                        Counter-Terrorist
+                                    option(value="t").
+                                        Terrorist
+                                input#nade-name.form-control(placeholder="Nade name")
+                                textarea#nade-description.form-control(placeholder="Description (optional)")
+                                input#nade-link.form-control(placeholder="Video or image link")
+                        #errors
+
 
                     .modal-footer
-                        button(type="button" class="btn btn-default" data-dismiss="modal").
+                        button#nade-close(type="button" class="btn btn-default" data-dismiss="modal").
                             Close
-                        button(type="button" class="btn btn-primary").
+                        button#nade-submit(type="button" class="btn btn-primary").
                             Submit
 
 

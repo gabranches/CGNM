@@ -49,3 +49,24 @@
 #add-nade {
 	color: black;
 }
+
+fieldset {
+	padding: 10px;
+}
+
+select, input, textarea {
+	margin: 20px 0;
+}
+
+.modal-content {
+	background-color: #E8E8E8;
+}
+
+.modal-body {
+	padding: 0 15px;
+}
+
+#errors {
+	color: red;
+	margin-left: 20px;
+}
