@@ -75,17 +75,22 @@ app.post('/ajax/newnade', function (request, response) {
             		team: data.team,
             		link: data.link,
             		title: data.title,
-            		rating: data.rating
+            		rating: 0,
+                    removed: 0,
+                    creator: request.session.id
             	}
         	);
 
         	doc.save(function(err) {
-                if (err) console.log(err);
+                if (err) {
+                    console.log(err);
+                } else {
+                    response.end('{"success" : "Updated Successfully", "status" : 200}');
+                }
             });
+
         });
 
-        response.end('{"success" : "Updated Successfully", "status" : 200}');
-        
     }
     
 });
@@ -102,7 +107,7 @@ app.post('/ajax/vote', function (request, response) {
         response.end('{"error" : "You have already voted.", "status" : 200}');
     } else {
         // Write vote
-        recentVotes.push(request.session.id + data.id + data.choice);
+        // recentVotes.push(request.session.id + data.id + data.choice);
         Map.findOne({ tag: data.map }, function (err, doc) {
             if (err) throw err;
 
@@ -113,6 +118,11 @@ app.post('/ajax/vote', function (request, response) {
                 nade.rating++;
             } else {
                 nade.rating--;
+
+                // Remove if rating == -5
+                if (nade.rating == -5) {
+                    nade.removed = 1;
+                }
             }
 
             doc.save(function(err) {
@@ -120,6 +130,7 @@ app.post('/ajax/vote', function (request, response) {
                 response.end('{"success" : "Vote Successful", "status" : 200, "rating": "'+nade.rating+'"}');
             });
         });
+
     }
 });
 

@@ -25,7 +25,9 @@ var Nade = new Schema({
     link: String,
     team: String,
     title: String,
-    box: Number
+    box: Number,
+    removed: {type: Number, default: 0},
+    creator: String
 });
 
 

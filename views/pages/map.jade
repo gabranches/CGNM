@@ -37,10 +37,10 @@ html
                             Train
                             
 
-                .col-xs-3.text-right
+                .col-xs-3
                     button#add-nade-button.btn.btn-primary.
                         Add a Nade
-                .col-xs-3
+                .col-xs-3.text-left
                     button#all-nades-button.btn.btn-primary.
                         View Full Nade List
 
@@ -105,7 +105,7 @@ html
                             .col-xs-5.
                                 Title
                             .col-xs-3.
-                                Link
+                                Video Link
                         #list-nades
 
                     .modal-footer
@@ -117,21 +117,19 @@ html
             .row
                 #nade-wrapper.col-xs-12.text-center
                     #nade-row.row(class= "{{team}}-bg")
-                        .col-xs-2
+                        .col-xs-2.nade-rating
                             span(class="glyphicon glyphicon-triangle-top" data-id="{{_id}}")
                             span(id="{{_id}}")
                                 | {{rating}}
                             span(class="glyphicon glyphicon-triangle-bottom" data-id="{{_id}}")
-                        .col-xs-2
+                        .col-xs-2.nade-type
                             | {{type}}
                         .col-xs-5
                             | {{title}}
                         .col-xs-3
-                            a(href="{{link}}" target="_blank") Watch Video
+                            a(href="{{link}}" target="_blank") 
+                                span(class="glyphicon glyphicon-play-circle")
                             
-          
-
-
 
         script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
         script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")

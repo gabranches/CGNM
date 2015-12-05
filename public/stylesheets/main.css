@@ -15,6 +15,8 @@
 	color:white;
 }
 
+
+
 .container {
 	width: 800px;
 	background-color: black;
@@ -137,11 +139,11 @@ select.form-control {
 }
 
 .ct-bg {
-	background-color: rgba(141, 202, 216, 0.39);
+	background-color: rgba(160, 198, 237, 1);
 }
 
 .t-bg {
-	background-color: rgba(181, 80, 21, 0.2);
+	background-color: rgba(231, 204, 133, 1);
 
 }
 
@@ -156,8 +158,9 @@ select.form-control {
 }
 
 .glyphicon-triangle-top, .glyphicon-triangle-bottom  {
-	margin:0 7px;
+	margin:0 5px;
 	cursor: pointer;
+	font-size: 13px;
 }
 
 #footer {
@@ -167,4 +170,16 @@ select.form-control {
 #map-title {
 	font-size: 24px;
 
+}
+
+.glyphicon-play-circle {
+	font-size: 20px;
+}
+
+.nade-type {
+	font-size: 16px;
+}
+
+.nade-rating {
+	font-size: 14px;
 }

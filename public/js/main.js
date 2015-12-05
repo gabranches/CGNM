@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 	$('#map-title').html(map.name);
 
-	// Sort
+	// Sort nade list
 	map.nades.sort(function(a, b) {
     return parseFloat(b.rating) - parseFloat(a.rating);
 });
@@ -17,7 +17,6 @@ state = {
 	addNade: false,
 	boxNum: null
 }
-
 
 
 //** Functions **//
@@ -71,12 +70,14 @@ function validateNewNade() {
 function addNadeToMap(nade) {
 	var elem = $('div[box-num="'+nade.box+'"]');
 	var count = parseInt(elem.attr('count'));
-	if (count == 0) {
-		elem.append('<div class="nade-count">1</div>');
-	} else {
-		elem.find('.nade-count').text(count + 1);
+	if (nade.removed != 1) {
+		if (count == 0) {
+			elem.append('<div class="nade-count">1</div>');
+		} else {
+			elem.find('.nade-count').text(count + 1);
+		}
+		elem.attr('count', count + 1);
 	}
-	elem.attr('count', count + 1);
 
 }
 
@@ -93,7 +94,9 @@ function listNades(num) {
 
 	map.nades.forEach(function(nade) {
 		if (nade.box == num || num == null) {
-			$('#list-nades').append(template(nade));
+			if (nade.removed != 1) {
+				$('#list-nades').append(template(nade));
+			}
 		}
 	});
 
@@ -120,8 +123,8 @@ function vote(id, choice) {
 }
 
 
-
 //** Events **//
+
 
 // Click on map squares
 $('.map-box').on('click', function () {
@@ -146,7 +149,7 @@ $('.map-box').on('click', function () {
 // Add nade button
 $('#add-nade-button').on('click', function () {
 	state.addNade = true;
-	$(this).text("Pick a spot on the map");
+	$(this).text("Pick a spot");
 });
 
 
@@ -198,8 +201,7 @@ $('#nade-submit').on('click', function () {
 			type: $('#nade-type option:selected').val(),
 			team: $('#nade-team option:selected').val(),
 			title: $('#nade-title').val().trim(),
-			link: $('#nade-link').val().trim(),
-			rating: 0
+			link: $('#nade-link').val().trim()
 		}
 
 
@@ -213,18 +215,9 @@ $('#nade-submit').on('click', function () {
 
 				if (res.error) {
 					alert(res.error);
-
 				} else {
-
-			  		$('#add-nade').modal('hide');
-			  		$('#add-nade-button').text("Success!");
-					addNadeToMap(data);
-					map.nades.push(data);
-			  		window.setTimeout(function() {
-			  			$('#add-nade-button').text("Add a Nade");
-			  		}, 5000);
+					window.location.href = '/maps/' + map.tag;
 				}
-
 		  	}
 		});
 	}
