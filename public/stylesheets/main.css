@@ -31,7 +31,7 @@
 
 #header {
 	font-size: 36px;
-	padding-bottom:20px;
+
 }
 
 #subheader {
@@ -117,15 +117,15 @@ select.form-control {
 }
 
 .nade-count {
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	background-color: red;
-	margin-left:10px;
-	margin-top:10px;
-	border-radius:3px;
-	font-weight: bold;
-}
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background-color: red;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
 
 #list-nades-table-header {
 	font-weight: bold;
