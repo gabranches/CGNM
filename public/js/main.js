@@ -124,11 +124,11 @@ function vote(id, choice) {
 
 function deleteNade(id, session) {
 
-	var data = {id: id, session: session};
+	var data = {id: id, session: session, map: tag};
 
 	$.ajax({
 	 	type: "POST",
-	 	url: '/ajax/delete',
+	 	url: '/ajax/remove',
 		data: vote,
 		datatype: "json",
 		success: function (res) {

@@ -67,7 +67,7 @@ app.post('/ajax/newnade', function (request, response) {
         // Add link
         recentNades.push(request.session.id);
         Map.findOne({tag: data.map}, function (err, doc) {
-        	if (err) throw err;
+        	
         	doc.nades.push(
     			{
             		box: data.box,
@@ -82,11 +82,8 @@ app.post('/ajax/newnade', function (request, response) {
         	);
 
         	doc.save(function(err) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    response.end('{"success" : "Updated Successfully", "status" : 200}');
-                }
+                if (err) throw err;
+                response.end('{"success" : "Updated Successfully", "status" : 200}');
             });
 
         });
@@ -110,29 +107,48 @@ app.post('/ajax/vote', function (request, response) {
         // recentVotes.push(request.session.id + data.id + data.choice);
         Map.findOne({ tag: data.map }, function (err, doc) {
             if (err) throw err;
-
             var nade = db.getElement(doc['nades'], '_id', data.id);
-
             console.log(nade);
             if (data.choice == 'up') {
                 nade.rating++;
             } else {
                 nade.rating--;
-
-                // Remove if rating == -5
                 if (nade.rating == -5) {
                     nade.removed = 1;
                 }
             }
 
             doc.save(function(err) {
-                if (err) console.log(err);
+                if (err) throw err;
                 response.end('{"success" : "Vote Successful", "status" : 200, "rating": "'+nade.rating+'"}');
             });
         });
 
     }
 });
+
+// Remove nade
+app.post('/ajax/remove', function (request, response) {
+    var data = request.body;
+    console.log(data);
+
+    // Check if session ids match
+    if(data.session == request.session.id) {
+
+        Map.findOne({ tag: data.map }, function (err, doc) {
+            if (err) throw err;
+            var nade = db.getElement(doc['nades'], '_id', data.id);
+            console.log(nade);
+            nade.removed = 1;
+
+            doc.save(function(err) {
+                if (err) throw err;
+                response.end('{"success" : "Nade removed", "status" : 200');
+            });
+        });
+    } 
+});
+
 
 
 setInterval(function() {
