@@ -122,6 +122,25 @@ function vote(id, choice) {
 	});
 }
 
+function deleteNade(id, session) {
+
+	var data = {id: id, session: session};
+
+	$.ajax({
+	 	type: "POST",
+	 	url: '/ajax/delete',
+		data: vote,
+		datatype: "json",
+		success: function (res) {
+			res = JSON.parse(res);
+			if (res.error) {
+				alert(res.error);
+			} else {
+				$('#' + id).text(res.rating);
+			}
+	  	}
+	});
+}
 
 //** Events **//
 

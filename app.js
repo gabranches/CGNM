@@ -48,7 +48,7 @@ app.get('/maps/:map', function (request, response) {
 	// Get map data and render page
 	Map.find({tag: map}, function (err, doc) {
 	    if (err) throw err;
-	    response.render('pages/map', {map: doc});
+	    response.render('pages/map', {map: doc, session: request.session.id});
 	});
 
 });

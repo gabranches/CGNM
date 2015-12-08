@@ -126,11 +126,13 @@ select.form-control {
     border-radius: 10px;
     font-weight: bold;
     font-size: 14px;
+}
 
 #list-nades-table-header {
 	font-weight: bold;
 	margin-bottom: 10px;
 	margin-top: 20px;
+	font-size: 16px;
 }
 
 #nade-row {
@@ -144,7 +146,6 @@ select.form-control {
 
 .t-bg {
 	background-color: rgba(231, 204, 133, 1);
-
 }
 
 #map-select {
@@ -158,7 +159,7 @@ select.form-control {
 }
 
 .glyphicon-triangle-top, .glyphicon-triangle-bottom  {
-	margin:0 5px;
+	margin:0 10px;
 	cursor: pointer;
 	font-size: 13px;
 }
@@ -169,7 +170,6 @@ select.form-control {
 
 #map-title {
 	font-size: 24px;
-
 }
 
 .glyphicon-play-circle {
@@ -181,5 +181,18 @@ select.form-control {
 }
 
 .nade-rating {
-	font-size: 14px;
+	font-size: 16px;
+}
+
+.video-link {
+	color: black;
+}
+
+.delete-button {
+	color:#CA1212;
+	cursor: pointer;
+}
+
+.nade-title {
+	font-size: 16px;
 }
