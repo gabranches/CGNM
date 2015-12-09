@@ -213,13 +213,13 @@ $('#all-nades-button').on('click', function () {
 
 // Vote up
 $(document).on('click', '.glyphicon-triangle-top', function() {
-	var id = $(this).attr('data-id');
+	var id = $(this).parent().parent().attr('data-id');
 	vote(id, "up");
 });
 
 // Vote down
 $(document).on('click', '.glyphicon-triangle-bottom', function() {
-	var id = $(this).attr('data-id');
+	var id = $(this).parent().parent().attr('data-id');
 	vote(id, "down");
 });
 

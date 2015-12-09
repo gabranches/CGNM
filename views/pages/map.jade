@@ -2,7 +2,7 @@ doctype html
 html
     head
         meta(charset="utf-8")
-        title CS:GO Smoke and Nade Maps
+        title CS:GO Smoke and Nade Maps - #{map[0].name}
         meta(description="Counter-Strike: Global Offensive Smokes, Flashes, and Molotovs Videos for All Competitive Maps.")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
@@ -145,10 +145,10 @@ html
                 #nade-wrapper.col-xs-12.text-center
                     #nade-row.row(class="{{team}}-bg" data-id="{{_id}}")
                         .col-xs-3.nade-rating
-                            span(class="glyphicon glyphicon-triangle-top" data-id="{{_id}}")
+                            span(class="glyphicon glyphicon-triangle-top")
                             span(id="{{_id}}")
                                 | {{rating}}
-                            span(class="glyphicon glyphicon-triangle-bottom" data-id="{{_id}}")
+                            span(class="glyphicon glyphicon-triangle-bottom")
                         .col-xs-2.nade-type
                             | {{type}}
                         .col-xs-7.nade-title
