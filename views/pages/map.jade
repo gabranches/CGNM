@@ -2,8 +2,8 @@ doctype html
 html
     head
         meta(charset="utf-8")
-        title Counter-Strike: Global Offensive Nade Maps
-        meta(description="CS:GO Smokes, Flashes, and Molotovs Videos for All Competitive Maps.")
+        title CS:GO Smoke and Nade Maps
+        meta(description="Counter-Strike: Global Offensive Smokes, Flashes, and Molotovs Videos for All Competitive Maps.")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
         link(rel="stylesheet", href="/stylesheets/main.css")
@@ -52,6 +52,33 @@ html
                 #map(style="background-image: url(/images/maps/#{map[0].tag}.jpg)")
                     - for (var x = 0; x < 400; x++)
                         .map-box(box-num=x count=0)
+                    #filter
+                        span(class="glyphicon glyphicon-filter" title="Filters")
+                    #filter-options
+                        select#filter-nade-type.form-control
+                            option(value="default" selected).
+                                All Nades
+                            option(value="Smoke").
+                                Smoke
+                            option(value="Flash").
+                                Flash
+                            option(value="Molotov").
+                                Molotov
+                            option(value="Frag").
+                                Frag
+
+                        select#filter-nade-team.form-control
+                            option(value="default" selected).
+                                Both Teams
+                            option(value="ct").
+                                Counter-Terrorist
+                            option(value="t").
+                                Terrorist
+                    #filter-label
+                        | Show/Hide Filters
+
+            .shadow-top.row
+                .col-xs-12
             #footer.row.text-center
                 .col-xs-2
                     a(href="https://docs.google.com/forms/d/1amF_0OzqKqUDdpF9us4OttN_QnKT1_NJOplwzCj_VlA/viewform?usp=send_form" target="_blank") Feedback

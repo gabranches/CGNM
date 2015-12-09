@@ -19,14 +19,14 @@
 
 .container {
 	width: 800px;
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.87);
 	padding-top:20px;
 	padding-bottom:20px;
 	-moz-box-shadow:    0 0 10px #000000;
-  	-webkit-box-shadow: 0 0 10px #000000;
-  	box-shadow:         0 0 10px #000000;
-	background-image: url(/images/backgrounds/black_mamba.png);
+	-webkit-box-shadow: 0 0 10px #000000;
+	box-shadow:         0 0 10px #000000;
 	background-repeat: repeat;
+	border-top: -1px solid rgba(255, 255, 255, 0.64);
 }
 
 #header {
@@ -37,6 +37,9 @@
 #subheader {
 	font-size: 16px;
 	padding-bottom: 15px;
+	box-shadow: 		0 5px 6px -1px rgba(0, 0, 0, 0.87);
+	-moz-box-shadow:    0 5px 6px -1px rgba(0, 0, 0, 0.87);
+	-webkit-box-shadow: 0 5px 6px -1px rgba(0, 0, 0, 0.87);
 }
 
 #map {
@@ -44,7 +47,10 @@
 	height: 800px;
 	margin: 0 auto;
 	padding:0;
-
+	box-shadow: 		0px -5px 12px -5px rgba(0, 0, 0, 0.87);
+	-moz-box-shadow:    0px -5px 12px -5px rgba(0, 0, 0, 0.87);
+	-webkit-box-shadow: 0px -5px 12px -5px rgba(0, 0, 0, 0.87);
+	position: relative;
 }
 
 .map-box {
@@ -55,7 +61,6 @@
 	padding:0;
 	margin-top:-5px;
 	cursor: pointer;
-
 }
 
 .map-box:hover {
@@ -156,6 +161,7 @@ select.form-control {
 #map-top {
 	padding-bottom: 25px;
 	padding-top:20px;
+	background-color: rgba(255, 255, 255, 0.1);
 }
 
 .glyphicon-triangle-top, .glyphicon-triangle-bottom  {
@@ -165,7 +171,7 @@ select.form-control {
 }
 
 #footer {
-	padding-top:10px;
+	padding-top: 8px;
 }
 
 #map-title {
@@ -191,8 +197,47 @@ select.form-control {
 .delete-button {
 	color:#CA1212;
 	cursor: pointer;
+	font-size:14px;
 }
 
 .nade-title {
 	font-size: 16px;
+}
+
+.shadow-top {
+	-moz-box-shadow:    inset 1px 5px 12px -6px  rgba(0, 0, 0, 0.87);
+	-webkit-box-shadow: inset 1px 5px 12px -6px  rgba(0, 0, 0, 0.87);
+	box-shadow: inset 1px 5px 12px -5px  rgba(0, 0, 0, 0.87);
+	height: 10px;
+}
+
+#filter {
+	position: absolute;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	background-color: rgba(90, 22, 90, 0.76);
+	border: 1px solid rgba(255, 255, 255, 0.49);
+	bottom: 5px;
+	cursor:pointer;
+
+}
+
+#filter:hover {
+	background-color: rgba(130, 49, 130, 0.76);
+}
+
+#filter-options {
+	display: none;
+	position: absolute;
+	bottom: 45px;
+	right: 20px;
+}
+
+#filter-label {
+	display: none;
+	position: absolute;
+	bottom: 15px;
+	right: 60px;
 }

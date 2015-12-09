@@ -103,19 +103,32 @@ app.post('/ajax/vote', function (request, response) {
         // Send error
         response.end('{"error" : "You have already voted.", "status" : 200}');
     } else {
+        // Add to recent votes
+        recentVotes.push(request.session.id + data.id + data.choice);
+
         // Write vote
-        // recentVotes.push(request.session.id + data.id + data.choice);
         Map.findOne({ tag: data.map }, function (err, doc) {
             if (err) throw err;
             var nade = db.getElement(doc['nades'], '_id', data.id);
             console.log(nade);
             if (data.choice == 'up') {
                 nade.rating++;
+                // Find the equivalent downvote if it exists
+                var index = recentVotes.indexOf(request.session.id + data.id + 'down');
+
+
             } else {
                 nade.rating--;
                 if (nade.rating == -5) {
                     nade.removed = 1;
                 }
+                // Find the equivalent upvote if it exists
+                var index = recentVotes.indexOf(request.session.id + data.id + 'up');
+            }
+
+            // Remove opposite from recentVotes
+            if (index > -1) {
+                recentVotes.splice(index, 1);
             }
 
             doc.save(function(err) {
@@ -133,7 +146,10 @@ app.post('/ajax/remove', function (request, response) {
     console.log(data);
 
     // Check if session ids match
-    if(data.session == request.session.id) {
+    if(data.sessionID == request.session.id) {
+
+        console.log(data.id);
+        console.log(data.map);
 
         Map.findOne({ tag: data.map }, function (err, doc) {
             if (err) throw err;
@@ -143,7 +159,7 @@ app.post('/ajax/remove', function (request, response) {
 
             doc.save(function(err) {
                 if (err) throw err;
-                response.end('{"success" : "Nade removed", "status" : 200');
+                response.end('{"success" : "Nade removed", "status" : 200}');
             });
         });
     } 

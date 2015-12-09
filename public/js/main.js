@@ -6,30 +6,30 @@ $(document).ready(function () {
 
 	// Sort nade list
 	map.nades.sort(function(a, b) {
-    return parseFloat(b.rating) - parseFloat(a.rating);
-});
-
+	    return parseFloat(b.rating) - parseFloat(a.rating);
+	});
 });
 
 //** Globals **//
 
 state = {
 	addNade: false,
-	boxNum: null
+	boxNum: null,
+	type: 'default',
+	team: 'default'
 }
 
 
 //** Functions **//
 
 function setBackground () {
-		var bg = map.tag;
-
-		$('body').css('background', 'url(/images/backgrounds/'+bg+'.jpg) no-repeat center center fixed');
-		$('body').css('-webkit-background-size', 'cover');
-		$('body').css('-moz-background-size', 'cover');
-		$('body').css('-o-background-size', 'cover');
-		$('body').css('background-size', 'cover');
-	}
+	var bg = map.tag;
+	$('body').css('background', 'url(/images/backgrounds/'+bg+'.jpg) no-repeat center center fixed');
+	$('body').css('-webkit-background-size', 'cover');
+	$('body').css('-moz-background-size', 'cover');
+	$('body').css('-o-background-size', 'cover');
+	$('body').css('background-size', 'cover');
+}
 
 function validateNewNade() {
 
@@ -56,7 +56,6 @@ function validateNewNade() {
 		errors += 'Please enter a nade link. <br />';
 	}
 
-
 	$('#errors').append(errors);
 
 	if (errors == '') {
@@ -67,10 +66,26 @@ function validateNewNade() {
 
 }
 
+
+function passFilter(nade) {
+	var pass = true;
+
+	if (state.type != nade.type && state.type != 'default') {
+		pass = false;
+	}
+
+	if (state.team != nade.team && state.team != 'default') {
+		pass = false;
+	}
+
+	return pass;
+}
+
+
 function addNadeToMap(nade) {
 	var elem = $('div[box-num="'+nade.box+'"]');
 	var count = parseInt(elem.attr('count'));
-	if (nade.removed != 1) {
+	if (nade.removed != 1 && passFilter(nade)) {
 		if (count == 0) {
 			elem.append('<div class="nade-count">1</div>');
 		} else {
@@ -82,9 +97,12 @@ function addNadeToMap(nade) {
 }
 
 function loadNades() {
+	$('.map-box').empty();
+	$('.map-box').attr('count', '0');
+
 	map.nades.forEach(function (nade) {
 		addNadeToMap(nade);
-	})
+	});
 }
 
 function listNades(num) {
@@ -124,19 +142,19 @@ function vote(id, choice) {
 
 function deleteNade(id, session) {
 
-	var data = {id: id, session: session, map: tag};
+	var data = {id: id, sessionID: session, map: map.tag};
 
 	$.ajax({
 	 	type: "POST",
 	 	url: '/ajax/remove',
-		data: vote,
+		data: data,
 		datatype: "json",
 		success: function (res) {
 			res = JSON.parse(res);
 			if (res.error) {
 				alert(res.error);
 			} else {
-				$('#' + id).text(res.rating);
+				window.location.href = '/maps/' + map.tag;
 			}
 	  	}
 	});
@@ -207,6 +225,44 @@ $('#map-select').on('change', function() {
 	var nextMap = $(this).val();
 	window.location.href = '/maps/' + nextMap;
 });
+
+// Delete button
+$(document).on('click', '.delete-button', function () {
+	var id = $(this).parent().parent().attr('data-id');
+	var r = confirm("This will delete your nade. Are you sure?");
+	if (r == true) {
+		deleteNade(id, session);
+	}
+});
+
+
+
+// Toggle filters
+$('#filter').click(function () {
+	$('#filter-options').toggle();
+});
+
+// Filter button hover
+$('#filter').mouseenter(function () {
+	$('#filter-label').show();
+});
+
+$('#filter').mouseleave(function () {
+	$('#filter-label').hide();
+});
+
+// Filter options change
+
+$('#filter-nade-team').on('change', function () {
+	state.team = $(this).val();
+	loadNades();
+});
+
+$('#filter-nade-type').on('change', function () {
+	state.type = $(this).val();
+	loadNades();
+});
+
 
 // Nade submit
 $('#nade-submit').on('click', function () {
