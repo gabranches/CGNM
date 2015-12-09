@@ -75,13 +75,17 @@
 
 .btn-primary {
 	background-color: #4E652F;
-    border-color: #4E652F;
-    border-radius: 2px;
+	border-color: #79905A;
+    border-radius: 0px;
     outline: none;
 }
 
 .btn:focus, .btn:active {
   outline: none !important;
+}
+
+.btn {
+	border-radius: 0px;
 }
 
 #add-nade {
@@ -98,11 +102,11 @@ select, input, textarea {
 
 select.form-control {
 	-webkit-border-radius: 0px;
-	border-radius: 2px;
 }
 
 .modal-content {
 	background-color: #E8E8E8;
+	border-radius: 0px;
 }
 
 .modal-header {
@@ -146,11 +150,11 @@ select.form-control {
 }
 
 .ct-bg {
-	background-color: rgba(160, 198, 237, 1);
+	background-color: rgba(160, 198, 237, 0.48);
 }
 
 .t-bg {
-	background-color: rgba(231, 204, 133, 1);
+	background-color: rgba(231, 204, 133, 0.59);
 }
 
 #map-select {

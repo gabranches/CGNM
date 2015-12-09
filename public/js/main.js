@@ -112,7 +112,7 @@ function listNades(num) {
 
 	map.nades.forEach(function(nade) {
 		if (nade.box == num || num == null) {
-			if (nade.removed != 1) {
+			if (nade.removed != 1 && passFilter(nade)) {
 				$('#list-nades').append(template(nade));
 			}
 		}
@@ -173,6 +173,7 @@ $('.map-box').on('click', function () {
 		$("#errors").html('');
 		$('#add-nade').modal('show');
 		state.boxNum = boxNum;
+		$('.map-box').css('cursor', 'pointer');
 	} else {
 		// Show nades
 		if ($(this).find('.nade-count').length > 0) {
@@ -187,6 +188,7 @@ $('.map-box').on('click', function () {
 $('#add-nade-button').on('click', function () {
 	state.addNade = true;
 	$(this).text("Pick a spot");
+	$('.map-box').css('cursor', 'crosshair');
 });
 
 
@@ -194,6 +196,7 @@ $('#add-nade-button').on('click', function () {
 $('#add-nade').on('hidden.bs.modal', function () {
 	$('#add-nade-button').text("Add a Nade");
 	state.addNade = false;
+	$('.map-box').css('cursor', 'pointer');
 });
 
 
