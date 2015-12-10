@@ -187,7 +187,7 @@ select.form-control {
 #map-top {
 	padding-bottom: 25px;
 	padding-top:20px;
-	background-color: rgba(52, 64, 77, 0.36);
+	background-color: rgba(255, 255, 255, 0.08);
 }
 
 .glyphicon-triangle-top, .glyphicon-triangle-bottom  {

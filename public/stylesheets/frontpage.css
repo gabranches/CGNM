@@ -7,7 +7,7 @@ body {
 .fp-col {
 	padding: 0 30px;
 	padding-top: 30px;
-	background-color: rgba(52, 64, 77, 0.36);
+	background-color: rgba(255, 255, 255, 0.08);
 }
 
 .section-header {
@@ -48,11 +48,13 @@ body {
 	font-size: 16px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	color: orange;
 }
 
 .update-header {
 	font-size: 16px;
 	margin-bottom:10px;
+	color: orange;
 }
 
 .updates {
