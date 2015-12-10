@@ -1,0 +1,43 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        block title
+            title CS:GO Smoke and Nade Maps
+        meta(description="Counter-Strike: Global Offensive Smokes, Flashes, and Molotovs Videos for All Competitive Maps.")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/stylesheets/main.css")
+        link(rel="icon" href="/favicon.ico")
+        link(href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css')
+
+    body
+        .container
+            #header.text-center.row
+                a(href="/") CS:GO Nade Maps
+            #subheader.text-center.row
+                | Smokes, Flashes, and Molotovs for all Competitive Maps
+
+            
+            block content
+
+            .shadow-top.row
+                .col-xs-12
+            #footer.row.text-center
+                .col-xs-2
+                    a(href="https://docs.google.com/forms/d/1amF_0OzqKqUDdpF9us4OttN_QnKT1_NJOplwzCj_VlA/viewform?usp=send_form" target="_blank") Feedback
+                .col-xs-2
+                    a(href="https://github.com/gabranches/CGNM" target="_blank") GitHub
+
+
+        block modals
+
+
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+        script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+        script(src="/js/handlebars.js")
+        script(src="/js/helpers.js")
+
+        block scripts
+
+        

@@ -37,8 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Front page
 app.get('/', function (request, response) {
-    var map = maps[Math.floor(Math.random() * maps.length)];
-    response.redirect(/maps/+map);
+    response.render('pages/index');
 });
 
 // Map page
@@ -57,6 +56,7 @@ app.get('/maps/:map', function (request, response) {
 // New nade
 app.post('/ajax/newnade', function (request, response) {
     var data = request.body;
+    var ip = request.header('x-forwarded-for') || request.connection.remoteAddress;
 	console.log(data);
 
     // Check if user recently added a link
@@ -70,6 +70,7 @@ app.post('/ajax/newnade', function (request, response) {
         	
         	doc.nades.push(
     			{
+                    ip: ip,
             		box: data.box,
             		type: data.type,
             		team: data.team,
@@ -103,8 +104,7 @@ app.post('/ajax/vote', function (request, response) {
         // Send error
         response.end('{"error" : "You have already voted.", "status" : 200}');
     } else {
-        // Add to recent votes
-        recentVotes.push(request.session.id + data.id + data.choice);
+        
 
         // Write vote
         Map.findOne({ tag: data.map }, function (err, doc) {
@@ -129,6 +129,9 @@ app.post('/ajax/vote', function (request, response) {
             // Remove opposite from recentVotes
             if (index > -1) {
                 recentVotes.splice(index, 1);
+            } else {
+                // Add to recent votes
+                recentVotes.push(request.session.id + data.id + data.choice);
             }
 
             doc.save(function(err) {

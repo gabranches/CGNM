@@ -20,6 +20,8 @@ var Comment = new Schema({
 
 
 var Nade = new Schema({
+    date: { type: Date, default: Date.now },
+    ip: String,
     type: String,
     rating: Number,
     link: String,

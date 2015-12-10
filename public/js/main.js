@@ -135,6 +135,13 @@ function vote(id, choice) {
 				alert(res.error);
 			} else {
 				$('#' + id).text(res.rating);
+				// Change nade rating in front end array
+				var nade = getElement(map.nades, '_id', id);
+				if (choice == 'up') {
+					nade.rating++;
+				} else {
+					nade.rating--;
+				}
 			}
 	  	}
 	});
@@ -159,6 +166,14 @@ function deleteNade(id, session) {
 	  	}
 	});
 }
+
+
+function getElement (arr, key, value) {
+    return arr.filter(function (elem) {
+       return elem[key] == value;
+    })[0];
+}
+
 
 //** Events **//
 

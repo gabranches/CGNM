@@ -245,3 +245,11 @@ select.form-control {
 	bottom: 15px;
 	right: 60px;
 }
+
+#header a {
+	color: white;
+}
+
+#header:hover a {
+	text-decoration: none;
+}
