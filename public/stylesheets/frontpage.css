@@ -1,9 +1,65 @@
 body {
 
-	background: url(/images/backgrounds/dust2.jpg) no-repeat center center fixed;
+	background: url(/images/backgrounds/inferno.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size:; cover;
 	-o-background-size: cover;
 	background-size: cover;
+	color: rgb(247, 247, 247);
 	
+}
+
+.fp-col {
+	padding: 0 30px;
+	padding-top: 30px;
+	background-color: rgba(255, 255, 255, 0.07);
+}
+
+.section-header {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.highlight {
+	color: orange;
+}
+
+.map-thumbs-wrapper {
+	margin-left: 20px;
+}
+
+.map-thumb-box {
+	display: inline-block;
+	margin:10px;
+	cursor: pointer;
+	width:150px;
+}
+
+.map-thumb-box img {
+	width: 150px;
+}
+
+.map-thumb-box:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.map-thumb {
+	-webkit-box-shadow: 0 10px 6px -7px black;
+	-moz-box-shadow: 0 10px 6px -7px black;
+	box-shadow: 0 10px 6px -7px black;
+}
+
+.map-name {
+	font-size: 16px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.update-header {
+	font-size: 16px;
+	margin-bottom:10px;
+}
+
+.updates {
+	margin-left: 20px;
 }

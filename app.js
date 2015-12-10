@@ -37,7 +37,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Front page
 app.get('/', function (request, response) {
-    response.render('pages/index');
+    Map.find({}, 'tag name', {sort: 'name'},  function (err, doc) {
+        response.render('pages/index', {maps: doc});
+    });
 });
 
 // Map page

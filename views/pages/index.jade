@@ -7,6 +7,60 @@ block title
 
 block content
 
+    .row.fp-col
+        .col-xs-12
+            | CGNM is a place for the CS:GO Community to post video guides with nade set-ups for all competitive maps.<br /> Anyone can post and vote. <span class="highlight">No login required</strong>.
+
+
+    .row.fp-col
+        .col-xs-12.section-header
+            | Active Duty Maps
+        .col-xs-12.map-thumbs-wrapper
+            .row
+                each map in maps
+                    .map-thumb-box.text-center(data-tag="#{map.tag}")
+                        .map-thumb
+                            img(src="/images/thumbnails/#{map.tag}.jpg")
+                        .map-name
+                           | #{map.name}
+
+        .col-xs-12.section-header
+            | Reserve Maps
+        .col-xs-12.map-thumbs-wrapper
+            | Coming soon!
+
+
+    .row.fp-col
+        .col-xs-12.section-header
+            | Site Updates
+
+        .col-xs-12.update-header
+            | December 10th, 2015 - Site Launch!
+        .col-xs-12.updates
+            | The site is launching today with the following features: 
+            ul
+                li
+                    | 7 maps now available: Cache, Cobblestone, Dust II, Inferno, Mirage, Overpass and Train
+                li
+                    | Users can add smokes, flashbangs, molotovs and frag grenades to each map
+                li
+                    | Users can vote up/down for each nade
+                li
+                    | Nades with a rating below "-5" will be deleted from the map
+                li
+                    | Users are able to remove their own nades if so desired
+                li
+                    | Filters have been added to the maps. You may now filter the nades by team or type.
+                         
+
+
+    .row.fp-col
+
 
 
 block scripts
+    script(type="text/javascript").
+        $('.map-thumb-box').click(function () {
+            var tag = $(this).attr('data-tag');
+            window.location.href = '/maps/' + tag;
+        });

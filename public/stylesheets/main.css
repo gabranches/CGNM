@@ -7,7 +7,7 @@
 	height: 100%;
 	font-family: 'Play', sans-serif;
 	background-color: rgba(0, 0, 0, 0.79);
-	color: white;
+	color: rgb(247, 247, 247);
 	font-size: 14px;
 }
 
@@ -20,7 +20,7 @@
 .container {
 	width: 800px;
 	background-color: rgba(0, 0, 0, 0.87);
-	padding-top:20px;
+	padding-top:10px;
 	padding-bottom:20px;
 	-moz-box-shadow:    0 0 10px #000000;
 	-webkit-box-shadow: 0 0 10px #000000;
