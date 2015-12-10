@@ -12,7 +12,7 @@
 }
 
 #footer a {
-	color:white;
+	color:rgb(247, 247, 247);
 }
 
 
@@ -105,7 +105,8 @@ select.form-control {
 }
 
 .modal-content {
-	background-color: #E8E8E8;
+	background-color: #23303E;
+	/* color: white; */
 	border-radius: 0px;
 }
 
@@ -117,7 +118,12 @@ select.form-control {
 
 .modal-body {
 	padding: 0 15px;
-	color: black;
+	color: rgb(247, 247, 247);
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.modal-footer {
+	border-top: 0;
 }
 
 #errors {
@@ -147,14 +153,25 @@ select.form-control {
 #nade-row {
 	padding: 20px 0px;
 	margin: 5px -15px;
+	background-color: rgb(52, 64, 77);
+}
+
+#nade-row a {
+	color: rgb(247, 247, 247);
+}
+
+.nade-team {
+	font-size: 16px;
+	text-transform: uppercase;
+
 }
 
 .ct-bg {
-	background-color: rgba(160, 198, 237, 0.48);
+	/* background-color: rgba(160, 198, 237, 0.48); */
 }
 
 .t-bg {
-	background-color: rgba(231, 204, 133, 0.59);
+	background-color: rgba(231, 204, 133, 0);
 }
 
 #map-select {
@@ -162,10 +179,15 @@ select.form-control {
 	background-color: rgba(255, 255, 255, 0.76);
 }
 
+#nade-type, #nade-team, #nade-title, #nade-link, .btn-default {
+	background-color: rgba(255, 255, 255, 0.76);
+	border-radius: 0;
+}
+
 #map-top {
 	padding-bottom: 25px;
 	padding-top:20px;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(52, 64, 77, 0.36);
 }
 
 .glyphicon-triangle-top, .glyphicon-triangle-bottom  {
@@ -247,7 +269,7 @@ select.form-control {
 }
 
 #header a {
-	color: white;
+	color: rgb(247, 247, 247);
 }
 
 #header:hover a {

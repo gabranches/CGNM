@@ -113,7 +113,9 @@ block modals
                             Rating
                         .col-xs-2.
                             Type
-                        .col-xs-7.
+                        .col-xs-1.
+                            Side
+                        .col-xs-6.
                             Title / Video Link
                     #list-nades
 
@@ -133,7 +135,9 @@ block modals
                         span(class="glyphicon glyphicon-triangle-bottom")
                     .col-xs-2.nade-type
                         | {{type}}
-                    .col-xs-7.nade-title
+                    .col-xs-1.nade-team
+                        | {{team}}
+                    .col-xs-6.nade-title
                         | <a href="{{link}}" target="_blank">{{title}}</a> {{{creatorHelper creator}}}
                     
 
