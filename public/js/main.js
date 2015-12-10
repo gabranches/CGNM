@@ -23,12 +23,17 @@ state = {
 //** Functions **//
 
 function setBackground () {
-	var bg = map.tag;
-	$('body').css('background', 'url(/images/backgrounds/'+bg+'.jpg) no-repeat center center fixed');
-	$('body').css('-webkit-background-size', 'cover');
-	$('body').css('-moz-background-size', 'cover');
-	$('body').css('-o-background-size', 'cover');
-	$('body').css('background-size', 'cover');
+	var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+	if (w > 800) {
+		var bg = map.tag;
+		$('body').css('background', 'url(/images/backgrounds/'+bg+'.jpg) no-repeat center center fixed');
+		$('body').css('-webkit-background-size', 'cover');
+		$('body').css('-moz-background-size', 'cover');
+		$('body').css('-o-background-size', 'cover');
+		$('body').css('background-size', 'cover');
+	} else {
+		$('body').css('background-color', 'black');
+	}
 }
 
 function validateNewNade() {

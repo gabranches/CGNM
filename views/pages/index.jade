@@ -64,3 +64,15 @@ block scripts
             var tag = $(this).attr('data-tag');
             window.location.href = '/maps/' + tag;
         });
+
+    script(type="text/javascript").
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+        if (w > 800) {
+            $('body').css('background', 'url(/images/backgrounds/inferno.jpg) no-repeat center center fixed');
+            $('body').css('-webkit-background-size', 'cover');
+            $('body').css('-moz-background-size', 'cover');
+            $('body').css('-o-background-size', 'cover');
+            $('body').css('background-size', 'cover');
+        } else {
+            $('body').css('background-color', 'black');
+        }
