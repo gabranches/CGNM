@@ -13,7 +13,7 @@ var ipfilter = require('express-ipfilter');
 var recentVotes = [];
 var recentNades = [];
 var maps = ['dust2', 'cbble', 'cache', 'inferno', 'mirage', 'overpass', 'train'];
-var ips = ['209.49.221.194'];
+var ips = [''];
 
 
 // Session variables
