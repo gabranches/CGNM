@@ -8,10 +8,12 @@ global.appRoot = path.resolve(__dirname);
 var Map = require('./models/model');
 var bodyParser = require('body-parser');
 var db = require('./lib/dbTransactions')();
+var ipfilter = require('express-ipfilter');
 
 var recentVotes = [];
 var recentNades = [];
 var maps = ['dust2', 'cbble', 'cache', 'inferno', 'mirage', 'overpass', 'train'];
+var ips = ['209.49.221.194'];
 
 
 // Session variables
@@ -176,6 +178,7 @@ setInterval(function() {
     recentNades = [];
 }, 10000);
 
+app.use(ipfilter(ips));
 
 app.listen(app.get('port'), function () {
     console.log('Node app is running.');
