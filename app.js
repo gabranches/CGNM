@@ -35,6 +35,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(ipfilter(ips));
 
 
 // Front page
@@ -178,7 +179,7 @@ setInterval(function() {
     recentNades = [];
 }, 10000);
 
-app.use(ipfilter(ips));
+
 
 app.listen(app.get('port'), function () {
     console.log('Node app is running.');
