@@ -207,7 +207,7 @@ $('.map-box').on('click', function () {
 // Add nade button
 $('#add-nade-button').on('click', function () {
 	state.addNade = true;
-	$(this).text("Pick a spot");
+	$(this).text("Select the pop area");
 	$('.map-box').css('cursor', 'crosshair');
 });
 
