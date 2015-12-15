@@ -124,7 +124,7 @@ app.post('/ajax/vote', function (request, response) {
 
             } else {
                 nade.rating--;
-                if (nade.rating == -5) {
+                if (nade.rating == -10) {
                     nade.removed = 1;
                 }
                 // Find the equivalent upvote if it exists
