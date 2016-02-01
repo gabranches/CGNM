@@ -34,10 +34,6 @@ body {
 	width: 150px;
 }
 
-.map-thumb-box:hover {
-	background-color: rgba(255, 255, 255, 0.1);
-}
-
 .map-thumb {
 	-webkit-box-shadow: 0 10px 6px -7px black;
 	-moz-box-shadow: 0 10px 6px -7px black;
