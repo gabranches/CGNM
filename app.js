@@ -40,9 +40,10 @@ app.use(ipfilter(ips));
 
 // Front page
 app.get('/', function (request, response) {
-    Map.find({}, 'tag name', {sort: 'name'},  function (err, doc) {
-        response.render('pages/index', {maps: doc});
-    });
+    // Map.find({}, 'tag name', {sort: 'name'},  function (err, doc) {
+    //     response.render('pages/index', {maps: doc});
+    // });
+    response.send('Site temporarily offline. Please check back soon.');
 });
 
 // Map page
